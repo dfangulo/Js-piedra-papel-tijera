@@ -1,0 +1,55 @@
+body {
+    padding: 0;
+    margin: 0;
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+    background-color: azure;
+}
+.titulo {
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    width: auto;
+    padding: 10px;
+    background-color: black;
+}
+.jugando {
+    background-color: darkslategray;
+    width: fit-content;
+    margin: 20PX auto;
+    padding-inline: 200px;
+}
+
+.jugador {
+    width: fit-content;
+    margin-left: 0 auto;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    color:whitesmoke;
+    padding:20px;
+}
+
+#winner {
+    color:yellowgreen;
+    font-size:xx-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: darkslategray;
+    color: whitesmoke;
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+button:hover {
+    padding: 0 10px;
+    color: yellow;
+    
+}
+table {
+    width: 100%;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+
+<body>
+    <h1 class="titulo">Juego de piedra papel o tijeras..</h1>
+    <button class="button" id="play" onclick="play()">Jugar</button>
+    <table>
+        <thead><tr>
+            <td>Turnos</td>
+            <td>Empates</td>
+        </tr>
+        </thead>
+        <tr class="row">
+            <td class="col" id="turnos"></td>
+            <td class="col"  id="empates"></td>
+        </tr>
+    </table>
+    <div class="jugando">
+        <div id="jugador1" class="jugador">Jugador 1 : - - - - - </div>
+        <div id="jugador2" class="jugador">Jugador 2 : - - - - - </div>
+    </div>
+    <h2>Ganador:</h2>
+    <div id="winner">|</div>
+    <script src="/js/player.js"></script>
+    <script src="/js/javascript.js"></script>
+</body>
+
+</html>
