@@ -1,51 +1,97 @@
 //Simple juego de piedra papel o tijera entre dos jugadores:
-const jugador1 = new Player('jugador1');
-const jugador2 = new Player('jugador2');
+
+const jugador1 = new Player(document.getElementById('inpJugador1').value);
+const jugador2 = new Player(document.getElementById('inpJugador2').value);
 let play1Wins = 0;
 let play2Wins = 0;
-let turnos = 1;
+let turnos = 0;
 let empates = 0;
-function play()
-{
-    render(winnner(jugador1.getObjeto(), jugador2.getObjeto()));
-    turnos += 1;
+let nameinput1 = document.getElementById('inpJugador1');
+let nameinput2 = document.getElementById('inpJugador2');
+
+nameinput1.addEventListener('input', liberarBoton)
+nameinput2.addEventListener('input', liberarBoton)
+
+function liberarBoton() {
+    if (nameinput1.value.length > 3 && nameinput2.value.length > 3) {
+        document.getElementById('play').style.color = "green";
+        document.getElementById('play').disabled = false;
+    } else {
+        document.getElementById('play').disabled = true;
+    }
 }
 
-function winnner(play1, play2){
-    if (play1 === play2) {
+
+function play() {
+    //validar nombres
+
+    if (nameinput1.value !== nameinput2.value) {
+        const jugador1 = new Player(document.getElementById('inpJugador1').value);
+        const jugador2 = new Player(document.getElementById('inpJugador2').value);
+        // pintar al ganador
+        turnos +=1;
+        render(winnner(jugador1, jugador2));
+    }
+
+}
+
+function winnner(play1, play2) {
+    let ganador;
+    const objJugador1 = play1.getObjeto();
+    const objJugador2 = play2.getObjeto();
+    const nombreJugador1 = play1.getName();
+    const nombreJugador2 = play2.getName();
+    if (objJugador1 === objJugador2) {
         ganador = 'Empate!'
-        if (turnos != 1) turnos -= 1;
         empates += 1;
-    } else if (play1 == 'piedra' && play2 == 'tijeras' || play1 == 'tijeras' && play2 == 'papel' || play1 =='papel' && play2 == 'piedra') {
-        ganador = 'Jugador 1';
+    } else if (objJugador1 == 'piedra' && objJugador2 == 'tijeras' || objJugador1 == 'tijeras' && objJugador2 == 'papel' || objJugador1 == 'papel' && objJugador2 == 'piedra') {
+        ganador = nombreJugador1;
         play1Wins += 1;
 
     } else {
-        ganador = 'Jugador 2';
+        ganador = nombreJugador2;
         play2Wins += 1;
     }
-    const players = `{"jugador1": "${play1}", "ganados1":"${play1Wins}", "jugador2" : "${play2}", "ganados2":"${play2Wins}", "ganador": "${ganador}"}`;
+    let players = `{"nombreJugador1":"${nombreJugador1}", "objJugador1" : "${objJugador1}", "ganados1":"${play1Wins}", "nombreJugador2":"${nombreJugador2}","objJugador2" : "${objJugador2}", "ganados2":"${play2Wins}", "ganador": "${ganador}"}`;
     return players;
 }
 
-function render(players) 
-{
+function render(players) {
     const objPlayers = JSON.parse(players);
+    //console.log (objPlayers);
+    const turnoshtmlth = document.getElementById('thTurnos')
+    turnoshtmlth.innerText = 'TURNOS';
+    const ganadorhtmlth = document.getElementById('thGanador')
+    ganadorhtmlth.innerText = 'GANADOR';
+    const empateshtmlth = document.getElementById('thEmpates')
+    empateshtmlth.innerText = 'EMPATES';
 
+    //crear las salidas de turnos y empates en la tabla
     const ganadorhtml = document.getElementById('winner')
     ganadorhtml.innerText = objPlayers.ganador;
-
-    const jugador1html = document.getElementById(jugador1.getName());
-    jugador1html.innerText = 'Jugador 1 : ' + objPlayers.jugador1 + ' Ganados: ' + ((objPlayers.ganados1 / turnos) * 100).toFixed(2) + '%';
-
-    const jugador2html = document.getElementById(jugador2.getName());
-    jugador2html.innerText = 'Jugador 2 : ' + objPlayers.jugador2  + ' Ganados: ' + ((objPlayers.ganados2 / turnos) * 100).toFixed(2) + '%';
-
-    //crear las salidas de turnos y empates
     const turnoshtml = document.getElementById('turnos')
-    turnoshtml.innerText = turnos + empates;
-
+    turnoshtml.innerText = empates + parseInt(objPlayers.ganados1) + parseInt(objPlayers.ganados2);
     const empateshtml = document.getElementById('empates')
     empateshtml.innerText = empates;
 
+
+    //etiqueta de los jugadores
+    const tagNameJugador1html = document.getElementById('tagNameJugador1')
+    tagNameJugador1html.innerText = objPlayers.nombreJugador1;
+    const tagNameJugador2html = document.getElementById('tagNameJugador2')
+    tagNameJugador2html.innerText = objPlayers.nombreJugador2;
+
+    //numero de ganados por jugador
+    const ganadosJugador1html = document.getElementById('ganadosJugador1')
+    ganadosJugador1html.innerText = objPlayers.ganados1;
+    const ganadosJugador2html = document.getElementById('ganadosJugador2')
+    ganadosJugador2html.innerText = objPlayers.ganados2;
+
+    //porcentajes
+    let porcentajeJugador1 = ((objPlayers.ganados1 / turnos) * 100).toFixed(2) + '%';
+    let porcentajeJugador2 = ((objPlayers.ganados2 / turnos) * 100).toFixed(2) + '%';
+    const porcentajeJugador1html = document.getElementById('porcentajeJugador1')
+    porcentajeJugador1html.innerText = porcentajeJugador1;
+    const porcentajeJugador2html = document.getElementById('porcentajeJugador2')
+    porcentajeJugador2html.innerText = porcentajeJugador2;
 }

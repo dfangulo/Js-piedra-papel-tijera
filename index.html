@@ -5,30 +5,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Piedra papel o tijera</title>
     <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
 </head>
 
 <body>
     <h1 class="titulo">Juego de piedra papel o tijeras..</h1>
-    <button class="button" id="play" onclick="play()">Jugar</button>
-    <table>
-        <thead><tr>
-            <td>Turnos</td>
-            <td>Empates</td>
-        </tr>
-        </thead>
-        <tr class="row">
-            <td class="col" id="turnos"></td>
-            <td class="col"  id="empates"></td>
-        </tr>
-    </table>
-    <div class="jugando">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <label for="inpJugador1" class="form-label">Jugador 1</label>
+                <input type="text" name="inpJugador1" id="inpJugador1" class="form-control form-control-lg inputName"
+                    placeholder="Nombre jugador 1">
+            </div>
+            <div class="col-6">
+                <label for="inpJugador2" class="form-label">Jugador 2</label>
+                <input type="text" name="inpJugador2" id="inpJugador2" class="form-control form-control-lg inputName"
+                    placeholder="Nombre jugador 2">
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding: 40px 0;">
+        <button class="btn" id="play" onclick="play()">Jugar</button>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr class="row">
+                        <th class="col-3" id="thTurnos"></th>
+                        <th class="col-6" id="thGanador"></th>
+                        <th class="col-3" id="thEmpates"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row">
+                        <td class="col-3" id="turnos"></td>
+                        <td class="col-6" id="winner"></td>
+                        <td class="col-3" id="empates"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div><br/>
+    <div class="container">
+        <div class="row">
+            <table>
+                <thead>
+                    <tr class="row">
+                        <th class="col-6" id="tagNameJugador1"></th>
+                        <th class="col-6" id="tagNameJugador2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row">
+                        <td class="col-6" id="ganadosJugador1"></td>
+                        <td class="col-6" id="ganadosJugador2"></td>
+                    </tr>
+                    <tr class="row">
+                        <td class="col-6" id="porcentajeJugador1"></td>
+                        <td class="col-6" id="porcentajeJugador2"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <div class="jugando">
         <div id="jugador1" class="jugador">Jugador 1 : - - - - - </div>
         <div id="jugador2" class="jugador">Jugador 2 : - - - - - </div>
-    </div>
-    <h2>Ganador:</h2>
-    <div id="winner">|</div>
+    </div> -->
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/player.js"></script>
     <script src="/js/javascript.js"></script>
 </body>
