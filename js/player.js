@@ -1,21 +1,18 @@
-class Player{
-    constructor(jugador){
-       this.name = jugador;
-       this.objeto = this.getObjeto();
+class Player {
+    constructor(jugador) {
+        this.name = jugador;
+        this.objeto = this.getObjeto();
     }
 
-    getObjeto()
-     {
+    getObjeto() {
         const objetos = ['piedra', 'papel', 'tijeras'];
         const index = Math.floor(Math.random() * 3);
         return objetos[index];
     }
-    objeto()
-    {
+    objeto() {
         return this.objeto();
     }
-    getName()
-    {
+    getName() {
         return this.name;
     }
 }

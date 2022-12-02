@@ -24,12 +24,11 @@ function liberarBoton() {
 
 function play() {
     //validar nombres
-
     if (nameinput1.value !== nameinput2.value) {
         const jugador1 = new Player(document.getElementById('inpJugador1').value);
         const jugador2 = new Player(document.getElementById('inpJugador2').value);
         // pintar al ganador
-        turnos +=1;
+        turnos += 1;
         render(winnner(jugador1, jugador2));
     }
 
@@ -73,7 +72,6 @@ function render(players) {
     turnoshtml.innerText = empates + parseInt(objPlayers.ganados1) + parseInt(objPlayers.ganados2);
     const empateshtml = document.getElementById('empates')
     empateshtml.innerText = empates;
-
 
     //etiqueta de los jugadores
     const tagNameJugador1html = document.getElementById('tagNameJugador1')
