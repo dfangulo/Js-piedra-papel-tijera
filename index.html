@@ -10,15 +10,11 @@
   </head>
 
   <body>
-    <!-- <h1 class="titulo">Juego de piedra papel o tijeras..</h1> -->
-    <nav class="navbar navbar-light bg-dark.bg-gradient">
-      <a class="navbar-brand" href="#">Juego de Piedra Papel o Tijeras</a>
-    </nav>
-
+    <h1 class="display-4">Juego de Piedra Papel o Tijeras</h1>
     <div class="container">
       <div class="row">
         <div class="col-6">
-          <label for="inpJugador1" class="form-label">Jugador 1</label>
+          <label for="inpJugador1" class="form-label fs-3">Jugador 1</label>
           <input
             type="text"
             name="inpJugador1"
@@ -28,7 +24,7 @@
           />
         </div>
         <div class="col-6">
-          <label for="inpJugador2" class="form-label">Jugador 2</label>
+          <label for="inpJugador2" class="form-label fs-3">Jugador 2</label>
           <input
             type="text"
             name="inpJugador2"
@@ -41,13 +37,13 @@
     </div>
     <div class="container">
       <div class="row mt-5">
-        <div class="col-4" >
+        <div class="col-4">
           <img id="imgJugador1" class="jugador1" src="" />
         </div>
-        <button class="btn col-4" id="play" onclick="play()">
+        <button class="btn col-4 btn-primary" id="play" onclick="play()">
           Jugar
         </button>
-        <div class="col-4" >
+        <div class="col-4">
           <img id="imgJugador2" class="jugador2" src="" />
         </div>
       </div>

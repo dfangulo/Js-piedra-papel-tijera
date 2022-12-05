@@ -2,6 +2,8 @@
 
 const jugador1 = new Player(document.getElementById('inpJugador1').value);
 const jugador2 = new Player(document.getElementById('inpJugador2').value);
+imgRender('imgJugador1', jugador1.getObjeto());
+imgRender('imgJugador2', jugador2.getObjeto());
 let play1Wins = 0;
 let play2Wins = 0;
 let turnos = 0;
@@ -14,7 +16,8 @@ nameinput2.addEventListener('input', liberarBoton)
 
 function liberarBoton() {
     if (nameinput1.value.length > 3 && nameinput2.value.length > 3) {
-        document.getElementById('play').style.color = "green";
+        //document.getElementById('play').style.color = "green";
+        document.getElementById("play").className = "btn col-4 btn-success";
         document.getElementById('play').disabled = false;
     } else {
         document.getElementById('play').disabled = true;
@@ -36,6 +39,7 @@ function play() {
 
 function winnner(play1, play2) {
     let ganador;
+    let color;
     const objJugador1 = play1.getObjeto();
     const objJugador2 = play2.getObjeto();
     const nombreJugador1 = play1.getName();
@@ -45,19 +49,22 @@ function winnner(play1, play2) {
         empates += 1;
         imgRender('imgJugador1', objJugador1);
         imgRender('imgJugador2', objJugador2);
+        color = "red";
     } else if (objJugador1 == 'piedra' && objJugador2 == 'tijeras' || objJugador1 == 'tijeras' && objJugador2 == 'papel' || objJugador1 == 'papel' && objJugador2 == 'piedra') {
         ganador = nombreJugador1;
         play1Wins += 1;
         imgRender('imgJugador1', objJugador1);
         imgRender('imgJugador2', objJugador2);
-
+        color = "Blue";
     } else {
         ganador = nombreJugador2;
         play2Wins += 1;
         imgRender('imgJugador2', objJugador2);
         imgRender('imgJugador1', objJugador1);
+        color = "green";
     }
     let players = `{"nombreJugador1":"${nombreJugador1}", "objJugador1" : "${objJugador1}", "ganados1":"${play1Wins}", "nombreJugador2":"${nombreJugador2}","objJugador2" : "${objJugador2}", "ganados2":"${play2Wins}", "ganador": "${ganador}"}`;
+    document.getElementById('winner').style.color = color;
     return players;
 }
 
