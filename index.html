@@ -7,7 +7,6 @@
     <title>Piedra papel o tijera</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/stylesheet.css" />
-
   </head>
 
   <body>
@@ -40,8 +39,18 @@
         </div>
       </div>
     </div>
-    <div class="container" style="padding: 40px 0">
-      <button class="btn" id="play" onclick="play()">Jugar</button>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-4" >
+          <img id="imgJugador1" class="jugador1" src="" />
+        </div>
+        <button class="btn col-4" id="play" onclick="play()">
+          Jugar
+        </button>
+        <div class="col-4" >
+          <img id="imgJugador2" class="jugador2" src="" />
+        </div>
+      </div>
     </div>
     <div class="container">
       <div class="row">

@@ -43,13 +43,19 @@ function winnner(play1, play2) {
     if (objJugador1 === objJugador2) {
         ganador = 'Empate!'
         empates += 1;
+        imgRender('imgJugador1', objJugador1);
+        imgRender('imgJugador2', objJugador2);
     } else if (objJugador1 == 'piedra' && objJugador2 == 'tijeras' || objJugador1 == 'tijeras' && objJugador2 == 'papel' || objJugador1 == 'papel' && objJugador2 == 'piedra') {
         ganador = nombreJugador1;
         play1Wins += 1;
+        imgRender('imgJugador1', objJugador1);
+        imgRender('imgJugador2', objJugador2);
 
     } else {
         ganador = nombreJugador2;
         play2Wins += 1;
+        imgRender('imgJugador2', objJugador2);
+        imgRender('imgJugador1', objJugador1);
     }
     let players = `{"nombreJugador1":"${nombreJugador1}", "objJugador1" : "${objJugador1}", "ganados1":"${play1Wins}", "nombreJugador2":"${nombreJugador2}","objJugador2" : "${objJugador2}", "ganados2":"${play2Wins}", "ganador": "${ganador}"}`;
     return players;
@@ -92,4 +98,18 @@ function render(players) {
     porcentajeJugador1html.innerText = porcentajeJugador1;
     const porcentajeJugador2html = document.getElementById('porcentajeJugador2')
     porcentajeJugador2html.innerText = porcentajeJugador2;
+}
+
+function imgRender(jugador, objeto){
+    const id = jugador;
+    const img = `./img/${objeto}.png`;
+
+    const postImagen = document.getElementById(id);
+    try {
+        postImagen.src = img;
+        console.log(`ID:${id}  Objeto:${img}`);
+     } catch (err ){
+        console.log(err());
+     }
+    //document.getElementById(id).innerText = img;
 }
