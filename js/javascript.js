@@ -16,14 +16,12 @@ nameinput2.addEventListener('input', liberarBoton)
 
 function liberarBoton() {
     if (nameinput1.value.length > 3 && nameinput2.value.length > 3) {
-        //document.getElementById('play').style.color = "green";
-        document.getElementById("play").className = "btn col-4 btn-success";
+        document.getElementById('play').className = "btn col-4 btn-success";
         document.getElementById('play').disabled = false;
     } else {
         document.getElementById('play').disabled = true;
     }
 }
-
 
 function play() {
     //validar nombres
@@ -34,7 +32,6 @@ function play() {
         turnos += 1;
         render(winnner(jugador1, jugador2));
     }
-
 }
 
 function winnner(play1, play2) {
@@ -47,24 +44,20 @@ function winnner(play1, play2) {
     if (objJugador1 === objJugador2) {
         ganador = 'Empate!'
         empates += 1;
-        imgRender('imgJugador1', objJugador1);
-        imgRender('imgJugador2', objJugador2);
         color = "red";
     } else if (objJugador1 == 'piedra' && objJugador2 == 'tijeras' || objJugador1 == 'tijeras' && objJugador2 == 'papel' || objJugador1 == 'papel' && objJugador2 == 'piedra') {
         ganador = nombreJugador1;
         play1Wins += 1;
-        imgRender('imgJugador1', objJugador1);
-        imgRender('imgJugador2', objJugador2);
         color = "Blue";
     } else {
         ganador = nombreJugador2;
         play2Wins += 1;
-        imgRender('imgJugador2', objJugador2);
-        imgRender('imgJugador1', objJugador1);
         color = "green";
     }
     let players = `{"nombreJugador1":"${nombreJugador1}", "objJugador1" : "${objJugador1}", "ganados1":"${play1Wins}", "nombreJugador2":"${nombreJugador2}","objJugador2" : "${objJugador2}", "ganados2":"${play2Wins}", "ganador": "${ganador}"}`;
     document.getElementById('winner').style.color = color;
+    imgRender('imgJugador2', objJugador2);
+    imgRender('imgJugador1', objJugador1);
     return players;
 }
 
@@ -107,16 +100,10 @@ function render(players) {
     porcentajeJugador2html.innerText = porcentajeJugador2;
 }
 
-function imgRender(jugador, objeto){
+function imgRender(jugador, objeto) {
     const id = jugador;
     const img = `./img/${objeto}.png`;
-
     const postImagen = document.getElementById(id);
-    try {
-        postImagen.src = img;
-        console.log(`ID:${id}  Objeto:${img}`);
-     } catch (err ){
-        console.log(err());
-     }
-    //document.getElementById(id).innerText = img;
+    postImagen.src = img;
+    console.log(`ID:${id}  Objeto:${img}`);
 }
